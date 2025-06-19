@@ -1,0 +1,107 @@
+:root {
+  --white: #FFF;
+  --gray-light: #F5F5F5;
+  --gray-mid: #E0E0E0;
+  --black: #000;
+  --font: 'Inter', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font);
+  color: var(--black);
+  background: var(--white);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  cursor: none;
+}
+section { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2rem; text-align:center; }
+.gray-light { background:var(--gray-light); }
+.gray-mid { background:var(--gray-mid); }
+.white-bg { background:var(--white); }
+h1 { font-size:2.5rem; margin-bottom:1rem; }
+@media(min-width:768px){ h1{ font-size:4rem; } }
+.subtitle { font-size:1.125rem; margin-bottom:2rem; max-width:24rem; }
+.waitlist {
+  border:2px dashed var(--black);
+  padding:1rem;
+  border-radius:0.75rem;
+  display:flex;
+  gap:0.5rem;
+  width:100%;
+  max-width:20rem;
+  transition:box-shadow .3s;
+}
+.waitlist:focus-within { box-shadow:0 0 0 3px rgba(0,0,0,0.2); }
+.waitlist input {
+  flex:1;
+  padding:.75rem;
+  font-size:1rem;
+  border:none;
+  outline:none;
+}
+.waitlist button {
+  background:var(--black);
+  color:var(--white);
+  border:none;
+  padding:.75rem 1.25rem;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.waitlist button:hover { transform:scale(1.05); }
+
+/* Cube visuals */
+.cube {
+  width:12rem;
+  height:12rem;
+  border:2px solid var(--black);
+  border-radius:0.75rem;
+  margin-bottom:1.5rem;
+}
+.gray-light .cube { border-style:dotted; background:none; }
+.gray-mid .cube { background:rgba(0,0,0,0.1); }
+.white-bg .cube { background:var(--black); border:none; }
+
+h2 { font-size:2rem; margin-bottom:1rem; }
+ul { list-style:none; }
+li { margin:.5rem 0; font-size:1.125rem; }
+.quote { font-size:1.5rem; font-style:italic; }
+footer {
+  background:var(--black);
+  color:var(--white);
+  text-align:center;
+  padding:2rem;
+}
+footer nav a {
+  color:var(--white);
+  text-decoration:none;
+  margin:0 .25rem;
+  font-size:.875rem;
+  transition:opacity .2s;
+}
+footer nav a:hover { opacity:.7; }
+
+/* Custom cursor */
+.cursor {
+  position:fixed;
+  top:0;
+  left:0;
+  width:12px;
+  height:12px;
+  background:var(--black);
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:transform .15s ease-out;
+  z-index:9999;
+}
+
+/* Scroll animations */
+.fade-up {
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease-out, transform .6s ease-out;
+}
+.fade-up.is-visible {
+  opacity:1;
+  transform:translateY(0);
+}
