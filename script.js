@@ -9,8 +9,33 @@ document.querySelectorAll('.fade-up').forEach(el => {
 // Waitlist button alert
 document.getElementById('joinBtn').addEventListener('click', () => {
   const val = document.getElementById('emailInput').value.trim();
-  alert(val ? `Thanks! We'll keep you posted: ${val}` : 'Please provide your email or phone.');
+
+  if (!val) {
+    alert('Please provide your email or phone.');
+    return;
+  }
+
+  fetch('http://127.0.0.1:5000/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email: val })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message) {
+      alert(`✅ ${data.message}`);
+    } else if (data.error) {
+      alert(`⚠️ ${data.error}`);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Something went wrong while submitting. Please try again later.');
+  });
 });
+
 
 // Custom cursor logic
 const cursor = document.querySelector('.cursor');
