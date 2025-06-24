@@ -15,7 +15,7 @@ document.getElementById('joinBtn').addEventListener('click', () => {
     return;
   }
 
-  fetch('http://127.0.0.1:5000/', {
+  fetch('https://backend.tryo3.in', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
